@@ -3,13 +3,19 @@ import tensorflow as tf
 import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
-
+import os
+import gdown
 # Load the trained model
-@st.cache_resource
-def load_model():
-    return tf.keras.models.load_model("flower_model.keras")
 
-model = load_model()
+model_path = "flower_model.keras"
+drive_file_id = "1qJfWFr7NoDxEyPP7znGQLGl870mYTa4I"
+gdown_url = f"https://drive.google.com/uc?id={drive_file_id}"
+
+if not os.path.exists(model_path):
+    print("Downloading model from Google Drive...")
+    gdown.download(gdown_url, model_path, quiet=False)
+
+model = tf.keras.models.load_model(model_path)
 class_names = ['roses', 'daisy', 'dandelion', 'sunflowers', 'tulips']
 
 # App Title & Instructions
