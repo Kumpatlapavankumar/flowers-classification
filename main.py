@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import os
 import gdown
 # Load the trained model
-
+#load the model
 model_path = "flower_model.keras"
 drive_file_id = "1qJfWFr7NoDxEyPP7znGQLGl870mYTa4I"
 gdown_url = f"https://drive.google.com/uc?id={drive_file_id}"
